@@ -1,18 +1,32 @@
-use sha2::{Sha256, Digest};
+
+mod hashing;
+use hashing::sha256_hash;
+
+// example of hashing 'hello world'
+// fn main() {
+//     println!("Input: 'hello world'");
+//     let hash = sha256_hash("hello world");
+//     println!("SHA256 Hash: {}", hash);
+// }
 
 
-fn sha256_hash(input: &str) -> String {
+// example of hashing any input from command line
+// use `cargo build --release` to build the project
+// use std::env;
+// use std::process;
 
-    let mut hasher = Sha256::new();
-    hasher.update(input.as_bytes());
-    let result = hasher.finalize();
+// fn main() {
+//     let args: Vec<String> = env::args().collect();
 
-    format!("{:x}", result)
-}
+//     if args.len() != 2 {
+//         eprint!("Usage: {} <input_string>", args[0]);
+//         process::exit(1);
+//     }
+
+//     let input = &args[1];
+//     let hash = sha256_hash(input);
+//     println!("Input: '{}'", input);
+//     println!("SHA256 Hash: {}", hash);
+// }
 
 
-fn main() {
-    println!("Input: 'hello world'");
-    let hash = sha256_hash("hello world");
-    println!("SHA256 Hash: {}", hash);
-}
